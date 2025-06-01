@@ -3,10 +3,12 @@ require('dotenv').config();
 import express, { Request, Response } from "express";
 import { prisma } from "@repo/db/client";
 import { addProblem } from "@repo/common/zod";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({
@@ -16,6 +18,7 @@ app.get("/", (req, res) => {
 
 app.post("/addProblem", async (req: Request, res: Response) => {
   const parsedBody = addProblem.safeParse(req.body);
+  console.log(req.body);
   if (!parsedBody.success) {
     res.status(400).json({
       msg: "invlid data"
@@ -36,6 +39,7 @@ app.post("/addProblem", async (req: Request, res: Response) => {
       DescriptionBottom: parsedBody.data.descriptionBottom,
       cpuTimeLimit: parsedBody.data.cpuTimeLimit,
       memoryLimit: parsedBody.data.memoryLimit,
+      difficulty: parsedBody.data.difficulty
     }
   });
 
@@ -63,10 +67,31 @@ app.post("/addProblem", async (req: Request, res: Response) => {
     msg: "problem added successfully",
   })
 
-})
+});
+
+app.get("/problems", async (req: Request, res: Response) => {
+  try {
+    const ans = await prisma.problem.findMany({
+      include: {
+        basicTestCases: true,
+        testcases: true,
+      }
+    });
+    res.json({
+      msg: ans
+    })
+
+  } catch (err) {
+    console.log(err);
+  }
+  res.json({
+    msg: "invalid"
+  })
+
+});
 
 
 
-app.listen(3000, () => {
-  console.log("server is running on port 3000");
+app.listen(3001, () => {
+  console.log("server is running on port 3001");
 })

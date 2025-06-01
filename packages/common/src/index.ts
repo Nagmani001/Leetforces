@@ -11,6 +11,7 @@ import { z } from "zod";
 //  testcases         TestCase[]
 
 
+const difficulty = ["EASY", "MEDIUM", "HARD"];
 export const addProblem = z.object({
   password: z.string(),
   title: z.string(),
@@ -26,5 +27,6 @@ export const addProblem = z.object({
   testcases: z.array(z.object({
     input: z.string(),
     output: z.string(),
-  }))
+  })),
+  difficulty: z.string(),
 });

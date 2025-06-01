@@ -22,6 +22,7 @@ model Problem {
   memoryLimit       Int
   basicTestCases    BasicTestCases[]
   testcases         TestCase[]
+  difficulty        String
 }
 
 model TestCase {
