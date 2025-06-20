@@ -13,8 +13,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id       String @id @default(uuid())
+  username String
+  email    String
+  password String
+}
+
+// TODO : update this so that user and problem and status are in some relationship 
+model ProblemStatus {
+  id        String @id @default(uuid())
+  userId    String
+  problemId Int
+  status    Status @default(NOTSTARTED)
+}
+
 model Problem {
-  id                String           @id @default(uuid())
+  id                Int              @id @default(autoincrement())
   title             String           @unique
   DescriptionTop    String // markdown 
   DescriptionBottom String? // markdown 
@@ -22,7 +37,7 @@ model Problem {
   memoryLimit       Int
   basicTestCases    BasicTestCases[]
   testcases         TestCase[]
-  difficulty        String
+  difficulty        Difficulty
 }
 
 model TestCase {
@@ -30,7 +45,7 @@ model TestCase {
   input     String
   output    String
   Problem   Problem? @relation(fields: [problemId], references: [id])
-  problemId String
+  problemId Int
 }
 
 model BasicTestCases {
@@ -38,5 +53,17 @@ model BasicTestCases {
   input     String
   output    String
   Problem   Problem? @relation(fields: [problemId], references: [id])
-  problemId String
+  problemId Int
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum Status {
+  ATTEMPTED
+  SOLVED
+  NOTSTARTED
 }

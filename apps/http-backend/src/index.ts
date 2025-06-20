@@ -69,7 +69,8 @@ app.post("/addProblem", async (req: Request, res: Response) => {
 
 });
 
-app.get("/problems", async (req: Request, res: Response) => {
+
+app.get("/problemsMain", async (req: Request, res: Response) => {
   try {
     const ans = await prisma.problem.findMany({
       include: {
@@ -90,6 +91,21 @@ app.get("/problems", async (req: Request, res: Response) => {
 
 });
 
+app.get("/problems", async (req: Request, res: Response) => {
+  try {
+    const title_difficulty = await prisma.problem.findMany({
+      omit: {
+        cpuTimeLimit: true,
+        memoryLimit: true,
+        DescriptionBottom: true,
+        DescriptionTop: true,
+      }
+    });
+    res.json(title_difficulty);
+  } catch (Err) {
+    console.log(Err);
+  }
+});
 
 
 app.listen(3001, () => {

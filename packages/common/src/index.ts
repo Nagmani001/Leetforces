@@ -28,5 +28,5 @@ export const addProblem = z.object({
     input: z.string(),
     output: z.string(),
   })),
-  difficulty: z.string(),
+  difficulty: z.enum(["EASY", "MEDIUM", "HARD"]),
 });
