@@ -6,6 +6,9 @@ export default function Appbar() {
     <div>
       <Button variant="default">Submit</Button>
     </div>
-    <div>User</div>
+    <div className="flex gap-x-4">
+      <div>Theme toggel</div>
+      <div>User</div>
+    </div>
   </div>
 }
