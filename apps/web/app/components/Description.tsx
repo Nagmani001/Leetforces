@@ -1,19 +1,26 @@
 "use client"
 
+import DesciptionBottom from "./DescriptionBottom"
 import DesciptionTop from "./DescriptionTop"
-import ExampleTableInput from "./TableInput"
-import ExampleTableOutput from "./TableOutput"
+import Example from "./Example"
 import Title from "./Title"
 
 export default function Description() {
 
-  return <div>
+  return <div className="h-full overflow-y-auto">
     <Title />
-    <DesciptionTop />
-    <div className="font-semibold">Examples:</div>
+    <div className="p-4 pt-8 ">
+      <DesciptionTop />
+    </div>
+    <div className="font-semibold pl-4">Examples:</div>
     <div className="flex flex-col p-4">
-      <ExampleTableInput />
-      <ExampleTableOutput />
+      <div className="flex flex-col gap-y-4">
+        <Example />
+        <Example />
+      </div>
+    </div>
+    <div className="p-4 pt-8 ">
+      <DesciptionBottom />
     </div>
 
   </div>

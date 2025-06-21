@@ -34,3 +34,24 @@ export const mockProblems: Problem[] = [
     difficulty: Difficulty.HARD,
   },
 ];
+
+export const DescriptionTopTest = `
+Given a mathematical expression. The expression will be one of the following: **A + B**, **A - B**, **A \* B**, **A / B**.
+ \n &nbsp;
+
+Print the **result** of the mathematical expression.
+
+ \n &nbsp;
+
+### **Input**
+Only one line contains **A**, **S**, and **B**. **(1 ≤ A, B ≤ 10⁴)**. **S** is either **(+, -, *, /)***.
+
+ \n &nbsp;
+### **Output**
+Print the **result** of the mathematical expression.
+`
+
+export const DescriptionBottomTest = `### **Note**
+
+For the division operation, print the result as an **integer without any fractions**.`
+

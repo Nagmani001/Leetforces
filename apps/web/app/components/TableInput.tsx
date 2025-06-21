@@ -18,15 +18,16 @@ export default function ExampleTableInput() {
           </TableHead>
 
           <TableHead className="w-[7%] cursor-pointer text-right" >
-            <div className="flex items-center">
-              <Button variant="ghost">Copy</Button>
-            </div>
+            <Button variant="success" className="">Test</Button>
           </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell className="font-medium w-[100%] text-[#800] bg-[#eeeeef]" >nag</TableCell>
+          <TableCell className="font-medium w-[100%] text-[#800] bg-[#eeeeef] " >
+            3
+            <br />
+            3 1 2</TableCell>
           <TableCell className="bg-[#eeeeef]"></TableCell>
         </TableRow>
 

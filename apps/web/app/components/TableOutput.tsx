@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from '@repo/ui/shad/ui/button';
 import {
   Table,
@@ -9,6 +11,7 @@ import {
 } from '@repo/ui/shad/ui/table';
 
 export default function ExampleTableOutput() {
+
   return <div className="">
     <Table className="min-w-full border border-[#a4a4a5] ">
       <TableHeader>
@@ -18,16 +21,16 @@ export default function ExampleTableOutput() {
           </TableHead>
 
           <TableHead className="w-[7%] cursor-pointer text-right" >
-            <div className="flex items-center">
-              <Button variant="ghost">Copy</Button>
-            </div>
+            <Button variant="outline" onClick={() => {
+
+            }}>Copy</Button>
           </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell className="font-medium w-[100%] text-[#800] bg-[#eeeeef]" >
-            mani
+          <TableCell className="font-medium w-[100%] text-[#800] bg-[#eeeeef] ">
+            1 2 3
           </TableCell>
           <TableCell className="bg-[#eeeeef]"></TableCell>
         </TableRow>

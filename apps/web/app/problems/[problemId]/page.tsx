@@ -1,3 +1,4 @@
+
 import Appbar from "@/app/components/AppBar";
 import MainPanel from "@/app/components/Panel";
 
@@ -6,6 +7,8 @@ export default async function Problems({ params }: { params: Promise<{ problemId
 
   return <div className="flex flex-col h-screen w-screen">
     <Appbar />
-    <MainPanel />
+    <div className="flex-1 overflow-auto">
+      <MainPanel />
+    </div>
   </div>
 }
