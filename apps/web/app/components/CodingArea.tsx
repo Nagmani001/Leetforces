@@ -11,8 +11,6 @@ export default function CodingArea() {
   }
 
   return <div>
-
-
     <Editor
       height="100vh"
       defaultLanguage="javascript"

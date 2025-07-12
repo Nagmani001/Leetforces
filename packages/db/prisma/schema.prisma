@@ -14,18 +14,21 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
-  username String
-  email    String
-  password String
+  id            String          @id @default(uuid())
+  username      String
+  email         String
+  password      String
+  ProblemStatus ProblemStatus[]
 }
 
-// TODO : update this so that user and problem and status are in some relationship 
 model ProblemStatus {
-  id        String @id @default(uuid())
   userId    String
+  user      User    @relation(fields: [userId], references: [id])
   problemId Int
-  status    Status @default(NOTSTARTED)
+  problem   Problem @relation(fields: [problemId], references: [id])
+  status    Status  @default(NOTSTARTED)
+
+  @@id([userId, problemId])
 }
 
 model Problem {
@@ -38,6 +41,7 @@ model Problem {
   basicTestCases    BasicTestCases[]
   testcases         TestCase[]
   difficulty        Difficulty
+  ProblemStatus     ProblemStatus[]
 }
 
 model TestCase {

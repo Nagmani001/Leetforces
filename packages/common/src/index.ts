@@ -30,3 +30,19 @@ export const addProblem = z.object({
   })),
   difficulty: z.enum(["EASY", "MEDIUM", "HARD"]),
 });
+
+export const signupSchema = z.object({
+  name: z.string(),
+  email: z.string(),
+  password: z.string(),
+});
+
+
+export const signinSchema = z.object({
+  email: z.string(),
+  password: z.string(),
+});
+
+export const JWT_SECRET = "nagmani";
+
+export const BACKEND_URL = "http://localhost:3001/api/v1";

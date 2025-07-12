@@ -7,12 +7,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@repo/ui/shad/ui/select";
+import { BACKEND_URL } from "@repo/common/zod";
 import LabelInput from "../components/labelInput";
 import TestCase from "../components/testcaseInput";
 import { addProblems, basicTestCases, testCases } from "@/store/atoms";
 import { useAtom } from "jotai";
 import axios from "axios";
-import { Input } from "@repo/ui/shad/ui/input";
 
 export default function() {
   const [addProblem, setAddProblem] = useAtom(addProblems);
@@ -104,7 +104,7 @@ export default function() {
     <Button onClick={async () => {
       console.log(addProblem);
       try {
-        const res = await axios.post("http://localhost:3001/addProblem", {
+        const res = await axios.post(`${BACKEND_URL}/problem/addProblem`, {
           password: addProblem.password,
           title: addProblem.title,
           descriptionTop: addProblem.descriptionTop,
@@ -114,8 +114,11 @@ export default function() {
           basicTestCases: basictestCase,
           testcases: testCase,
           difficulty: addProblem.difficulty
-        }, {});
-        console.log(res);
+        }, {
+          headers: {
+            Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkOWVkNWYxYy00Yjg4LTQyOTQtOWRjNi04ZGNhNjZmNjExMGQiLCJpYXQiOjE3NTIyOTA5MzN9.jwk-5kBSKvha8TZqnLiQ4hQBflLGyuzMaCB1KLNa_tI"
+          }
+        });
 
       } catch (err) {
         console.log(err);

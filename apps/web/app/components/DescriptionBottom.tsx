@@ -1,10 +1,17 @@
-
 "use client";
-import { DescriptionBottomTest, DescriptionTopTest } from "@/lib/config";
-import Markdown from "react-markdown";
-export default function DesciptionBottom() {
+
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+export default function DesciptionBottom({ descriptionBottom }: any) {
 
   return <div>
-    <Markdown>{DescriptionBottomTest}</Markdown>
+    <ReactMarkdown
+      rehypePlugins={[rehypeRaw]}
+
+    // add this for:footnotes, strikethrough, tables, tasklists and URLs directly 
+    //   remarkPlugins={[remarkGfm]}
+    >
+      {descriptionBottom}
+    </ReactMarkdown>
   </div>
 }

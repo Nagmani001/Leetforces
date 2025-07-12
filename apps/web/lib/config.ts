@@ -1,5 +1,3 @@
-export const BACKEND_URL = "http://localhost:3001"
-
 export enum Difficulty {
   EASY = "EASY",
   MEDIUM = "MEDIUM",
@@ -37,17 +35,16 @@ export const mockProblems: Problem[] = [
 
 export const DescriptionTopTest = `
 Given a mathematical expression. The expression will be one of the following: **A + B**, **A - B**, **A \* B**, **A / B**.
- \n &nbsp;
-
+</br>
 Print the **result** of the mathematical expression.
 
- \n &nbsp;
+</br>
 
-### **Input**
+ **Input**
 Only one line contains **A**, **S**, and **B**. **(1 ≤ A, B ≤ 10⁴)**. **S** is either **(+, -, *, /)***.
 
- \n &nbsp;
-### **Output**
+</br>
+ **Output**
 Print the **result** of the mathematical expression.
 `
 

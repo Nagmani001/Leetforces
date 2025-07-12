@@ -24,8 +24,9 @@ let HTML;
   });
 
   // Navigate the page to a URL
-  await page.goto('https://api.scraperapi.com/?api_key=784d028f5799cabfef54052cc3781dcb&url=https%3A%2F%2Fcodeforces.com%2Fgroup%2FMWSDmqGsZm%2Fcontest%2F219158%2Fproblem%2FO', { timeout: 0 });
+  await page.goto('https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/K', { timeout: 0 });
 
+  /*
   const completeProblemStatement = await page.$eval(".problem-statement", (el) => el.innerHTML);
 
   HTML = completeProblemStatement;
@@ -48,6 +49,7 @@ let HTML;
   console.log("Title: ", actualTitle);
   console.log("Time limit: ", actualTimeLimit);
   console.log("Memory Limit: ", actualMemoryLimit);
+  */
 })();
 
 

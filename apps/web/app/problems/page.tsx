@@ -17,7 +17,8 @@ import {
 } from '@repo/ui/shad/ui/dropdown-menu';
 import { Skeleton } from '@repo/ui/shad/ui/skeleton';
 import { ArrowUpDown, Filter, List } from 'lucide-react';
-import { BACKEND_URL, Difficulty, Problem } from '@/lib/config';
+import { Difficulty, Problem } from '@/lib/config';
+import { BACKEND_URL } from "@repo/common/zod";
 import { Badge } from '@repo/ui/shad/ui/badge';
 import { getDifficultyColor } from '@/lib/utils';
 import axios from 'axios';
@@ -61,7 +62,7 @@ export default function ProblemListPage() {
 
   useEffect(() => {
     let func = async () => {
-      let ans = await axios.get(`${BACKEND_URL}/problems`);
+      let ans = await axios.get(`${BACKEND_URL}/problem/problems`);
       setLoading(false);
       setProblems(ans.data);
     };

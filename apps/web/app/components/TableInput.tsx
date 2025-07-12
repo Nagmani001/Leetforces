@@ -1,4 +1,7 @@
+"use client"
 import { Button } from '@repo/ui/shad/ui/button';
+
+import ReactMarkdown from "react-markdown";
 import {
   Table,
   TableBody,
@@ -7,8 +10,9 @@ import {
   TableHeader,
   TableRow,
 } from '@repo/ui/shad/ui/table';
+import rehypeRaw from 'rehype-raw';
 
-export default function ExampleTableInput() {
+export default function ExampleTableInput({ input }: any) {
   return <div className="">
     <Table className="min-w-full border border-[#a4a4a5] border-b-2 ">
       <TableHeader>
@@ -25,9 +29,10 @@ export default function ExampleTableInput() {
       <TableBody>
         <TableRow>
           <TableCell className="font-medium w-[100%] text-[#800] bg-[#eeeeef] " >
-            3
-            <br />
-            3 1 2</TableCell>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+              {input}
+            </ReactMarkdown>
+          </TableCell>
           <TableCell className="bg-[#eeeeef]"></TableCell>
         </TableRow>
 

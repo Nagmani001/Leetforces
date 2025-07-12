@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { Difficulty } from "./config";
+import axios from "axios";
+import { BACKEND_URL } from "@repo/common/zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -18,3 +20,4 @@ export const getDifficultyColor = (difficulty: Difficulty) => {
     default: return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
   }
 };
+

@@ -1,9 +1,20 @@
 "use client";
-import { DescriptionTopTest } from "@/lib/config";
 import ReactMarkdown from "react-markdown";
-export default function DesciptionTop() {
+import rehypeRaw from "rehype-raw";
 
-  return <div>
-    <ReactMarkdown>{DescriptionTopTest}</ReactMarkdown>
-  </div>
+
+// add this for:footnotes, strikethrough, tables, tasklists and URLs directly 
+import remarkGfm from 'remark-gfm'
+
+export default function DescriptionTop({ descriptionTop }: { descriptionTop: string }) {
+  return (
+    <ReactMarkdown
+      rehypePlugins={[rehypeRaw]}
+
+    // add this for:footnotes, strikethrough, tables, tasklists and URLs directly 
+    // remarkPlugins={[remarkGfm]}
+    >
+      {descriptionTop}
+    </ReactMarkdown>
+  );
 }
