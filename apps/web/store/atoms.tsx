@@ -19,3 +19,11 @@ export const basicTestCases = atom([{
   input: "",
   output: "",
 }]);
+
+export const code = atom<string>("");
+
+export const customInput = atom("");
+export const basicTestCase = atom([]);
+export const mainTestCase = atom([]);
+export const randomTestCaseOutput = atom("");
+export const randomTestCaseInput = atom("");

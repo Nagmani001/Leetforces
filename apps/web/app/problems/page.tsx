@@ -22,7 +22,7 @@ import { BACKEND_URL } from "@repo/common/zod";
 import { Badge } from '@repo/ui/shad/ui/badge';
 import { getDifficultyColor } from '@/lib/utils';
 import axios from 'axios';
-import { clsx } from 'clsx';
+import Appbar from '../components/AppBar';
 
 
 export default function ProblemListPage() {
@@ -62,9 +62,10 @@ export default function ProblemListPage() {
 
   useEffect(() => {
     let func = async () => {
-      let ans = await axios.get(`${BACKEND_URL}/problem/problems`);
+      let ans = await axios.get(`${BACKEND_URL}/problem/all-problem`);
       setLoading(false);
       setProblems(ans.data);
+
     };
     func();
   }, [])
@@ -82,6 +83,7 @@ export default function ProblemListPage() {
     console.log(val);
   }
   return (
+
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">

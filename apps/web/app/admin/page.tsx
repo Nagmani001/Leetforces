@@ -10,7 +10,7 @@ import {
 import { BACKEND_URL } from "@repo/common/zod";
 import LabelInput from "../components/labelInput";
 import TestCase from "../components/testcaseInput";
-import { addProblems, basicTestCases, testCases } from "@/store/atoms";
+import { addProblems, basicTestCases, code, testCases } from "@/store/atoms";
 import { useAtom } from "jotai";
 import axios from "axios";
 

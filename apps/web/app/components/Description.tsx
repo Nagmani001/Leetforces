@@ -4,7 +4,6 @@ import Example from "./Example"
 import Title from "./Title"
 
 export default function Description({ problem }: any) {
-  console.log(problem)
 
   return <div className="h-full overflow-y-auto">
     <Title title={problem.title} timeLimit={problem.cpuTimeLimit} memoryLimit={problem.memoryLimit} />

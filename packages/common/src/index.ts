@@ -27,6 +27,8 @@ export const addProblem = z.object({
   testcases: z.array(z.object({
     input: z.string(),
     output: z.string(),
+    inputTest: z.string(),
+    outputTest: z.string(),
   })),
   difficulty: z.enum(["EASY", "MEDIUM", "HARD"]),
 });

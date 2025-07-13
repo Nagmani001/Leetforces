@@ -12,7 +12,7 @@ export default function DescriptionTop({ descriptionTop }: { descriptionTop: str
       rehypePlugins={[rehypeRaw]}
 
     // add this for:footnotes, strikethrough, tables, tasklists and URLs directly 
-    // remarkPlugins={[remarkGfm]}
+    //   remarkPlugins={[remarkGfm]}
     >
       {descriptionTop}
     </ReactMarkdown>

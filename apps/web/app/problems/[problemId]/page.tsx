@@ -6,7 +6,7 @@ import axios from "axios";
 export default async function Problems({ params }: { params: Promise<{ problemId: string }> }) {
 
   const { problemId } = await params;
-  const problem = await axios.get(`${BACKEND_URL}/problem/${problemId}`);
+  const problem = await axios.get(`${BACKEND_URL}/problem/first/${problemId}`);
 
   return <div className="flex flex-col h-screen w-screen">
     <Appbar />

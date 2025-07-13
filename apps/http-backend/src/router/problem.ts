@@ -1,7 +1,6 @@
 import { addProblem } from "@repo/common/zod";
 import { prisma } from "@repo/db/client";
 import { Router, Request, Response } from "express";
-import { authorizeUser } from "./middleware";
 
 
 export const problemRouter = Router();
@@ -42,6 +41,8 @@ problemRouter.post("/addProblem", async (req: Request, res: Response) => {
         problemId: ans.id,
         input: test.input,
         output: test.output,
+        inputTest: test.inputTest,
+        outputTest: test.outputTest
       }
     })
   });
@@ -52,6 +53,8 @@ problemRouter.post("/addProblem", async (req: Request, res: Response) => {
         problemId: ans.id,
         input: test.input,
         output: test.output,
+        inputTest: test.input,
+        outputTest: test.output,
       }
     })
   });
@@ -62,9 +65,7 @@ problemRouter.post("/addProblem", async (req: Request, res: Response) => {
 
 });
 
-
-
-problemRouter.get("/:id", async (req: Request, res: Response) => {
+problemRouter.get("/first/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
   if (!id) { return; }
   try {
@@ -90,7 +91,7 @@ problemRouter.get("/:id", async (req: Request, res: Response) => {
 
 });
 
-problemRouter.get("/problems", async (req: Request, res: Response) => {
+problemRouter.get("/all-problem", async (req: Request, res: Response) => {
   try {
     const title_difficulty = await prisma.problem.findMany({
       omit: {
@@ -105,3 +106,4 @@ problemRouter.get("/problems", async (req: Request, res: Response) => {
     console.log(Err);
   }
 });
+
