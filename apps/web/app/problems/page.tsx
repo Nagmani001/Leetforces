@@ -63,9 +63,9 @@ export default function ProblemListPage() {
   useEffect(() => {
     let func = async () => {
       let ans = await axios.get(`${BACKEND_URL}/problem/all-problem`);
+      console.log(ans.data);
       setLoading(false);
       setProblems(ans.data);
-
     };
     func();
   }, [])

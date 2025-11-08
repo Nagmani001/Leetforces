@@ -22,7 +22,6 @@ export const addProblem = z.object({
   basicTestCases: z.array(z.object({
     input: z.string(),
     output: z.string(),
-
   })),
   testcases: z.array(z.object({
     input: z.string(),

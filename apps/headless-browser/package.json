@@ -8,6 +8,10 @@
   },
   "dependencies": {
     "@repo/typescript-config": "workspace:*",
+    "aws-sdk": "^2.1692.0",
+    "dotenv": "^16.5.0",
+    "jimp": "^1.6.0",
+    "openai": "^6.7.0",
     "puppeteer": "^24.10.2",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",

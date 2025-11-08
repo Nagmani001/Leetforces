@@ -1,13 +1,13 @@
+import 'dotenv/config'
+import OpenAI from "openai";
 import puppeteer from "puppeteer";
+import { uploadToS3 } from './uploadToS3';
 
 
-let TurndownService = require('turndown');
-var turndownService = new TurndownService();
-let HTML;
-
-
+export const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 (async () => {
+
   const browser = await puppeteer.launch({
     headless: false,
     executablePath: "/usr/bin/google-chrome-stable"
@@ -23,33 +23,9 @@ let HTML;
     height: Math.floor(768 + Math.random() * 100),
   });
 
-  // Navigate the page to a URL
-  await page.goto('https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/K', { timeout: 0 });
+  await page.goto('https://api.scraperapi.com/?api_key=c8d107bb9b82598ddf261ad1363bc994&url=https%3A%2F%2Fcodeforces.com%2Fgroup%2FMWSDmqGsZm%2Fcontest%2F219856%2Fproblem%2FM', { timeout: 0 });
 
-  /*
-  const completeProblemStatement = await page.$eval(".problem-statement", (el) => el.innerHTML);
-
-  HTML = completeProblemStatement;
-  console.log("HTML: ", completeProblemStatement);
-
-  let markdown = turndownService.turndown(HTML);
-  console.log("MARKDOWN: ", markdown);
-
-
-
-  const title = await page.$eval(".title", (el) => el.innerHTML);
-  const actualTitle = title.split(". ")[1];
-
-  const timeLimit = await page.$eval(".time-limit", (el) => el.innerHTML);
-  const actualTimeLimit = timeLimit.split("more than ")[1]?.split(".")[0];
-
-  const memoryLimit = await page.$eval(".memory-limit", (el) => el.innerHTML);
-  const actualMemoryLimit = memoryLimit.split("</div>")[1];
-
-  console.log("Title: ", actualTitle);
-  console.log("Time limit: ", actualTimeLimit);
-  console.log("Memory Limit: ", actualMemoryLimit);
-  */
+  const randomName = Math.random().toString();
+  await page.screenshot({ path: `/home/nagmani/root/${randomName}.png`, fullPage: true });
+  uploadToS3(randomName)
 })();
-
-

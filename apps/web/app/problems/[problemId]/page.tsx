@@ -4,7 +4,6 @@ import { BACKEND_URL } from "@repo/common/zod";
 import axios from "axios";
 
 export default async function Problems({ params }: { params: Promise<{ problemId: string }> }) {
-
   const { problemId } = await params;
   const problem = await axios.get(`${BACKEND_URL}/problem/first/${problemId}`);
 

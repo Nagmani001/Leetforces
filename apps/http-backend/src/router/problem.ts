@@ -9,7 +9,6 @@ export const problemRouter = Router();
 // add a problem  manually 
 problemRouter.post("/addProblem", async (req: Request, res: Response) => {
   const parsedBody = addProblem.safeParse(req.body);
-  console.log(req.body);
   if (!parsedBody.success) {
     res.status(400).json({
       msg: "invlid data"
